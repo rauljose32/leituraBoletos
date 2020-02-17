@@ -15,8 +15,9 @@ import java.util.List;
  */
 public interface LeituraRetorno {
 
-    DateTimeFormatter FORMATER_DATA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    DateTimeFormatter FORMATER_DATA_HORA = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss");
+    public static final DateTimeFormatter FORMATER_DATA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static final DateTimeFormatter FORMATER_DATA_HORA = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss");
+
     public List<Boleto> lerArquivo(String nomeArquivo);
 
 }
