@@ -5,6 +5,8 @@
  */
 package com.mycompany.leituraboleto.model;
 
+import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -13,11 +15,8 @@ import java.util.List;
  */
 public interface LeituraRetorno {
 
-    /**
-     *
-     * @param nomeArquivo
-     * @return
-     */
+    DateTimeFormatter FORMATER_DATA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    DateTimeFormatter FORMATER_DATA_HORA = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss");
     public List<Boleto> lerArquivo(String nomeArquivo);
 
 }

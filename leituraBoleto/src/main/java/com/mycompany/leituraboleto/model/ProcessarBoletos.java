@@ -1,25 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.leituraboleto.model;
+
+import java.util.List;
 
 /**
  *
- * @author aluno
+ * @author Raul
  */
 public class ProcessarBoletos {
 
     private LeituraRetorno leituraRetorno;
 
-    public void processar(String nomeArquivo) {
-        LeituraRetorno lr = new LeituraRetornoBancoBrasil();
-        lr.lerArquivo(nomeArquivo);
+    public ProcessarBoletos(LeituraRetorno leituraRetorno) {
+        this.leituraRetorno = leituraRetorno;
     }
 
-    public LeituraRetorno getLeituraRetorno() {
-        return leituraRetorno;
+    public void processar(String nomeArquivo) {
+        List<Boleto> boletos = leituraRetorno.lerArquivo(nomeArquivo);
+        for (Boleto b : boletos) {
+            System.out.println("Id: " + b.getId() + "\nBanco: " + b.getCodBanco());
+        }
     }
 
     public void setLeituraRetorno(LeituraRetorno leituraRetorno) {
