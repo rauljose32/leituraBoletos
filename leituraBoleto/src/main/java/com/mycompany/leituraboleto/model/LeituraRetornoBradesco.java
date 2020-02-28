@@ -6,6 +6,7 @@
 package com.mycompany.leituraboleto.model;
 
 import static com.mycompany.leituraboleto.model.LeituraRetorno.FORMATER_DATA;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,15 +16,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author aluno
  */
 public class LeituraRetornoBradesco implements LeituraRetorno {
-    
+
     /*Fazer Alterações necessarias*/
 
     @Override
-    public List<Boleto> lerArquivo(String nomeArquivo) {       List<Boleto> lista = new ArrayList();
+    public List<Boleto> lerArquivo(String nomeArquivo) {
+        List<Boleto> lista = new ArrayList();
         try {
             BufferedReader reader = Files.newBufferedReader(Paths.get(nomeArquivo));
             String ln;
@@ -33,12 +34,14 @@ public class LeituraRetornoBradesco implements LeituraRetorno {
                 Boleto b = new Boleto();
                 b.setId(Integer.parseInt(vetor[0]));
                 b.setCodBanco(vetor[1]);
-                b.setDataVencimento(LocalDate.parse(vetor[2], FORMATER_DATA));
-                b.setDatePagamento(LocalDate.parse(vetor[3], FORMATER_DATA).atTime(0, 0));
-                b.setCpfCliente(vetor[4]);
-                b.setValor(Double.parseDouble(vetor[5]));
-                b.setMulta(Double.parseDouble(vetor[6]));
-                b.setJuros(Double.parseDouble(vetor[7]));
+                b.setAgencia(vetor[2]);
+                b.setContaBancaria(vetor[3]);
+                b.setDataVencimento(LocalDate.parse(vetor[4], FORMATER_DATA));
+                b.setDatePagamento(LocalDate.parse(vetor[5], FORMATER_DATA).atTime(0, 0, 0));
+                b.setCpfCliente(vetor[6]);
+                b.setValor(Double.parseDouble(vetor[7]));
+                b.setMulta(Double.parseDouble(vetor[8]));
+                b.setJuros(Double.parseDouble(vetor[9]));
                 lista.add(b);
             }
             reader.readLine();
